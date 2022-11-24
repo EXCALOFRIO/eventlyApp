@@ -1,0 +1,185 @@
+#:kivy 2.1.0
+#: import RiseInTransition kivy.uix.screenmanager.RiseInTransition
+#: import SlideTransition kivy.uix.screenmanager.SlideTransition
+
+<ElementCard@MDCard>:
+    radius: '10dp'
+    spacing: '10dp'
+    padding: '10dp'
+    image: ''
+    text: ''
+    sub_text: ''
+    orientation: 'vertical'
+    ripple_behavior: True
+    on_release:
+        app.root.transition = RiseInTransition()
+   
+    
+
+<CustomizeScreen@MDBoxLayout>:
+    orientation: 'vertical'
+    text: ''
+    padding: 100
+
+    MDLabel:
+        text: root.text
+        halign: 'center'
+        pos_hint: {'center_x': .5}
+
+    MDFillRoundFlatButton:
+        text: 'Regresar'
+        pos_hint: {'center_x': .5}
+        on_release:
+            app.root.current = 'screen_principal'
+            app.root.transition = SlideTransition(direction= 'left')
+
+
+
+
+<ui>:
+    MDScreen:
+        name: 'screen_principal'
+        md_bg_color: 0, .5, .5, 1
+        MDBoxLayout:
+            orientation: 'vertical'
+            MDBoxLayout:
+                size_hint: 1, 0.2
+                orientation: 'horizontal'
+                padding: '10dp'
+                MDCard:
+                    radius:'10dp'
+                    padding:'10dp'
+                    line_color:1, 0, 1, 1
+
+                    MDLabel:
+                        text: "Evently"
+                        halign: 'center'
+                        pos_hint: {'center_y': 0.5}
+                    MDSwitch:
+                        pos_hint: {'center_y': 0.5}
+                        on_active:
+                            app.change_style(*args)
+
+            MDGridLayout:
+                cols: 3
+                size_hint: 1, .8
+                padding: ['10dp', '10dp', '10dp', '10dp']
+                spacing: '10dp'
+
+                ElementCard:
+                    on_release:
+                        root.current = 'screen1'
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        MDLabel:
+                            text: 'Mapa'
+                            halign: 'center'
+                        Image: 
+                            source: 'images/iconoMapa.png'
+                        MDLabel:
+                            text: 'Mapa de discotecas'
+                            halign: 'center'
+                    
+                    
+                
+                ElementCard:
+                    on_release:
+                        root.current = 'screen2'
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        MDLabel:
+                            text: 'Buscar discotecas'
+                            halign: 'center'
+                        Image: 
+                            source: 'images/iconoBusqueda.png'
+                        MDLabel:
+                            text: 'Filtrado de discotecas'
+                            halign: 'center'
+
+                ElementCard:
+                    on_release:
+                        root.current = 'screen3'
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        MDLabel:
+                            text: 'Añadir Discoteca'
+                            halign: 'center'
+                        Image: 
+                            source: 'images/iconoAnnadir.png'
+                        MDLabel:
+                            text: 'Añadir discoteca a la lista'
+                            halign: 'center'
+
+                ElementCard:
+                    on_release:
+                        root.current = 'screen4'
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        MDLabel:
+                            text: 'Añadir Fiesta'
+                            halign: 'center'
+                        Image: 
+                            source: 'images/iconoFiesta.png'
+                        MDLabel:
+                            text: 'Añadir tu propia fiesta'
+                            halign: 'center'
+                    
+
+                ElementCard:
+                    on_release:
+                        root.current = 'screen5'
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        MDLabel:
+                            text: 'Perfil'
+                            halign: 'center'
+                        Image: 
+                            source: 'images/iconoPerfil.jpeg'
+                        MDLabel:
+                            text: 'Ver tu perfil'
+                            halign: 'center'
+
+                ElementCard:
+                    on_release:
+                        root.current = 'screen6'
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        MDLabel:
+                            text: 'Reseñas'
+                            halign: 'center'
+                        Image: 
+                            source: 'images/iconoResenna.png'
+                        MDLabel:
+                            text: 'Ver y añadir reseñas'
+                            halign: 'center'
+    MDScreen:
+        name: 'screen1'
+        CustomizeScreen:
+            text: 'Pantalla uno'
+        
+    MDScreen:
+        name: 'screen2'
+        CustomizeScreen:
+            text: 'Pantalla dos'
+    
+    MDScreen:
+        name: 'screen3'
+        CustomizeScreen:
+            text: 'Pantalla tres'
+
+    MDScreen:
+        name: 'screen4'
+        CustomizeScreen:
+            text: 'Pantalla cuatro'
+
+    MDScreen:
+        name: 'screen5'
+        CustomizeScreen:
+            text: 'Pantalla cinco'
+
+    MDScreen:
+        name: 'screen6'
+        CustomizeScreen:
+            text: 'Pantalla seis'
+
+
